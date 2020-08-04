@@ -1,0 +1,163 @@
+<html>
+<head><title>Unconfined</title>
+<style>
+#center {margin: auto; text-align: center;}
+#maintext {margin: auto; width: 90%;}
+p{font: 15px arial, sans-serif;}
+#bottomimg {width: 50%; margin: auto;}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Unconfined</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="wallet.html">About Us</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="wallet.html">Planned Additions</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="usage.html">Use Unconfined with your website <span class="sr-only">(current)</span></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="wallet.html">Contact us</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="#" id="cxuser">Current User: None</a>
+      </li>
+    </ul>
+   
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+  <div class="row">
+  <div class="col">
+  <img id="bottomimg" src="https://cdn4.iconfinder.com/data/icons/cryptocoins/227/ETH-512.png"></img>
+  </div>
+  <div class="col-9">
+    <h1 class="display-4" style="">The Unconfined Payment Processor: Usage</h1>
+    <p class="lead" id="refix" style="">Documentation on using and integrating Unconfined with your business.</p>
+	</div>
+  </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+<div class="col-2">
+	<div class="btn-group-lg" role="group">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Components
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="margin: auto; width: 100%">
+      <a class="dropdown-item" href="#" onclick="loadtext('setup');">Basic Setup</a>
+      <a class="dropdown-item" href="#" onclick="loadtext('RequestPayment');">RequestPayment</a>
+	  <a class="dropdown-item" href="#" onclick="loadtext('handle');">Handling Payments</a>
+    </div>
+  </div>
+</div>
+<div class="col-5">
+<div class="card" style=" margin: auto; width: 90%; height: auto;" id="desc">
+Click an option in the dropdowns to proceed.
+</div>
+</div>
+<div class="col-5">
+<div class="card" style="width: 90%; height: auto;" id="example">
+Example:
+</div>
+</div>
+</div>
+
+
+
+<script>
+
+</script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<script>
+tTable = {};
+tTable["setup"] = [];
+tTable["setup"][0] = `
+Unconfined uses a WebSocket API in order to interact with your code remotely. For connecting, use the unconfined domain, followed by port 1014. <br><br>
+To request a payment from a 3rd party, a request is sent through the WebSocket (using a JSON object in string form). The request contains 
+all the details of the payment (the merchant's ethereum address, the amount in USD, etc). <br><br> The paramaters will be discussed more in each of their 
+pages in the dropdown - select one on the left to view more about how to use it.
+`
+tTable["setup"][1] = `
+The below example is written in JavaScript using Node.JS and the ws module<br><br>
+const WebSocket = require('ws');<br>
+
+const ws = new WebSocket('ws://unconfined.net:1014');<br>
+
+ws.on('open', function open() {<br>
+  ws.send(JSON.stringify({Action: "RequestPayment", MerchantAddress: "0x5cfac0aa4a64248829417e0831c7cdc73bd5cc5c", RequestedAmount: 45, MerchantName: "Unconfined Inc", Currency: "USD"}));<br>
+});<br>
+
+ws.on('message', function incoming(data) {<br>
+  console.log(data);<br>
+});
+`;
+
+tTable["RequestPayment"] = [];
+tTable["RequestPayment"][0] = `
+RequestPayment is the primary request used when a merchant would like to request a payment from a client. <br><br>To declare the api call is for RequestPayment, set the "Action" 
+key in your JSON string to "RequestPayment". All API calls are directed by different settings of the Action key. <br><br>
+After declaring the Action as RequestPayment, you need to set 4 other keys as payment data:<br><br> "MerchantAddress": This should be your / your companies Ethereum address - 
+it is the one you want the client to pay the money towards. <br>
+"RequestedAmount": The amount of money you are requesting, in USD.<br>
+"MerchantName": The name of your company,you - This is visible to the client so they can confirm you're the company they're sending to.<br>
+"Currency": "USD" or "ETH" - Specifies if the RequestedAmount is in Ethereum or USD.<br><br>
+Please note the client will pay in ethereum either way - if you specify USD as your currency, the client will recieve an ethereum payment amount equivalent to that amount in USD (live exchange rate).
+
+`;
+tTable["RequestPayment"][1] = `
+Below is an example of a JSON object used to request a payment.<br><br>
+{Action: "RequestPayment", MerchantAddress: "0x5cfac0aa4a64248829417e0831c7cdc73bd5cc5c", RequestedAmount: 34, MerchantName: "Unconfined Inc", Currency: "USD"}<br><br>
+
+Sent in string form, the above object would be used to request a payment to the listed eth address, for an ethereum value equivalent to 34 usd. The user would be shown that Unconfined Inc was requesting the payment. The client will recieve the 
+payment amount in the value of ethereum (live update exchange rate).
+`;
+
+tTable["handle"] = [];
+tTable["handle"][0] = `
+When a merchant sends a JSON request with the RequestPayment action (see RequestPayment tab), they will recieve a JSON string in return. When parsed, the resulting object has two keys. The returned "Action" key value is 
+"ClientReturn" - this is used so you (the merchant) can distinguish the data recieved. 	The 2nd value, "Value", contains an http link to a new page under the unconfined domain. This is the page that will give the client (buyer)
+information on how to pay the requested amount. Take this link and send it to the client/buyer. <br><br>
+
+The other JSON string you will recieve is one with the Action tag: "PaymentResult". A Result tag with either true or false - if it's true, it means you've been paid and you can proceed as you wish. If it's 
+false, it means the payment was never recieved. You will get the true return as soon as the transaction is completed with the payment - the false return will come after 24 hours of no payment.
+`;
+
+tTable["handle"][1] = `
+{Action: "PaymentResult", Result: false, Message: "24 hours have passed; No payment has been made - the transaction will now terminate."}
+<br><br>
+The above is a decoded example object you'll recieve if the buyer/client never pays<br><br>
+{Action: "PaymentResult", Result: true, Message: "Payment accepted and has been sent to your account"}<br><br>
+The above is a decoded example object of a successful, payed payment.
+<br><br>
+{Action: "ClientReturn", Value: "http://unconfined.net/EXAMPLELINK.html"}<br><br>
+The above is a decoded example object of the link you get when sending a RequestPayment object; forward the link to the client/buyer.
+
+`;
+function loadtext(key){
+document.getElementById('desc').innerHTML = tTable[key][0];
+document.getElementById('example').innerHTML = "<p>" + tTable[key][1] + "</p>";
+}
+</script>
+</html>

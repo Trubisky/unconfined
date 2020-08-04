@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>Unconfined ICO</title>
+<style>
+#icon{ 
+    transform-origin:50% 50%;
+    animation:4s rotateRight infinite linear; 
+	
+}
+@keyframes rotateRight{
+    100%{ transform:rotate(360deg); }
+}
+body{
+background-size: 100%;
+background-image: url("https://static.pexels.com/photos/234272/pexels-photo-234272.jpeg");
+ background-attachment: fixed;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+#header{text-align: center; font-family: "Tahoma"; font-size: 350%}
+</style>
+</head>
+<body>
+
+<div class="row">
+<div class="col-md-auto" style="background-color: white;">
+<ul class="nav flex-column">
+<br />
+	
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Unconfined</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="ico.html">ICO Details</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href='javascript:alert("Sorry, developer applications are not open at the moment");'>Developer Application</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://docs.google.com/document/d/1CPuO9rcHwivAwmNn2Hgh27mbvO5i0Av4fyiE9-sxero/edit">Whitepaper</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Roadmap</a>
+  </li>
+</ul>
+</div>
+<div class="col">
+<div class="container">
+
+<div class="row" style="width: 100%;">
+
+<div class="col-2">
+<br /><br />
+<img src="https://i.imgur.com/gBj3jgF.png" id="icon" style="width: 700%;">
+</div>
+
+<div class="col-8">
+<br /><br />
+<h1 id="header"></h1>
+<h4 id="changer" style="text-align: center;"></h4>
+</div>
+</div>
+</div>
+
+<br /><br />
+
+<div style="width: 80%; margin: auto;" class="row">
+<div class="col">
+<div class="card" id="rightdiv" style="width: 90%; height: auto; margin-left: -150%">
+  <div class="card-body">
+    <h1 style="text-align: center;" id="ticker1"> What is the Unconfined platform? </h1>
+	<br />
+	<p style="text-align: center;">
+	Unconfined is a platform aiming to bring the tools to use Cryptocurrency directly to the developer.
+	Unconfined is designed to allow developers of all kinds to integrate digital currency onto their platform.
+	We're in the process of creating a simplified API for a variety of common languages, so developers can easily
+	integrate without the learning curve of manipulating the blockchain, and without a need to switch to a new language.
+	</p>
+ </div>
+</div>
+<br /><br />
+</div>
+
+<div class="col">
+<div id = "leftdiv" class="card" style="width: 90%; height: auto; margin-left: 150%;">
+  <div class="card-body">
+    <h1 style="text-align: center;" id="ticker2"> How will Unconfined work? </h1>
+	<br />
+	<p style="text-align: center;">
+	Unconfined exists as a smart contract on the Ethereum network. The API will interact with that network with the direct 
+	protocals for UNC tokens (Unconfined as a digital asset). We aim to first release the simplified API for Javascript and C#,
+	two of the most common languages today, so developers will be able to integrate UNC with applications on any platform. Other common languages will be targeted in the future.
+	</p>
+ </div>
+</div>
+</div>
+<div class="card" style="width: 95%; height: auto;">
+  <div class="card-body">
+    <h1 style="text-align: center;" id="ticker3"> How can one get Unconfined? </h1>
+	<br />
+	<p style="text-align: center;">
+	The simplified API will be completely free; Any developer may integrate it with his or her project upon its release
+	and begin to use it in his or her platform. Unconfined  with have two different platform options, as listed below.
+	<br>
+	<h6> UNC Testnet </h6>
+	<p>
+	UNC will created as a smart contract on the Ethereum Rinkeby network. This contract will function almost exactly the same as the real network,
+	with the exception of restricted access to tokens. The contract will be created to allow anyone to airdrop UNC tokens to his or her wallet,
+	so developers may integrate before obtaining mainnet tokens. This is designed to promote stability to the developers before they complete
+	integration. This version will have a modified API configured for testnet usage.
+	</p>
+	<br />
+	<h6> UNC Mainnet </h6>
+	<p>
+	The UNC mainnet will function exactly the same as the testnet, without the Airdrop feature. It will be hosted on the Ethereum mainnet. In order to use the mainnet for commerical purposes,
+	developers and consumers will need to own UNC tokens. UNC will be avaliable in two ways. First, through an initial coin sale from the Unconfined developers.
+	UNC tokens will be avaliable at the rate of 15,000 UNC tokens per Ethereum. At the time of writing, this would make each UNC token worth near 50 cents.
+	<br />
+	If you are a developer hoping to use UNC tokens as currency or proof of transaction on your application or platform, you have the option to recieve free 
+	UNC tokens for usage. Anyone may apply for free UNC tokens. After the testnet release, submit an application that includes the following: An application
+	or platform example that utilizes the testnet, and proof of ownership, determined by attaching a visible token on your application. The amount of tokens
+	you are eligble to recieve depends on the size of your platform and will be determined post application. Tokens may be offered free of charge or at a reduced
+	cost from market.
+	</p>
+	<br />
+	<h6> Exchanges </h6>
+	<p>
+	UNC tokens are NOT DESIGNED as speculative assets. That being said, we recognize that people may want to exchange their tokens in the future, or buy for use on upcoming 
+	platforms by consumers that missed the initial token sale. We will attempt to get UNC listed on at least 2 exchanges directly after the ICO period, so consumers who missed the ICO and
+	developers who did not qualify for free tokens still have a path for access.
+	</p>
+ </div>
+
+</div>
+ <br /> <br /> <br />
+</div>
+</div>
+</div>
+</body>
+<script>
+//Just some page cleanup and resize shit
+function resize(){
+var right=document.getElementById('rightdiv').style.height;
+var left=document.getElementById('leftdiv').style.height;
+if(left>right)
+{
+    document.getElementById('rightdiv').style.height=left;
+}
+else
+{
+    document.getElementById('leftdiv').style.height=right;
+}
+}
+setTimeout(function(){resize();}, 100);
+var text = "The Unconfined Platform"
+var xtext = "A project for the developer in you."
+var text2 = ""
+var xtext2 = ""
+
+
+
+shrink = 700;
+function shrinkicon(){
+	document.getElementById('icon').style.width = String(shrink)+"%";
+	shrink = shrink - 1;
+	if (shrink != 110){
+	setTimeout(shrinkicon, 3);
+	}
+	else{
+	setTimeout(addletters, 1000)
+	}
+}
+setTimeout(shrinkicon, 1000);
+
+i=1;
+function addletters(){
+text2 = text2 + text.substring(i-1,i);
+i++;
+document.getElementById("header").innerHTML = text2;
+if (i != text.length+1){
+setTimeout(addletters, 80)
+}
+else{
+i=0;
+setTimeout(addletters2, 70)
+}
+}
+var start = 150;
+function leftslider(){
+document.getElementById('leftdiv').style["margin-left"] = start + "%";
+start-=1;
+if (start != -1){
+setTimeout(leftslider, 5);
+}
+}
+
+var start2 = -150;
+function rightslider(){
+document.getElementById('rightdiv').style["margin-left"] = start2 + "%";
+start2+=1;
+if (start2 != 1){
+setTimeout(rightslider, 5);
+}
+}
+
+function addletters2(){
+xtext2 = xtext2 + xtext.substring(i-1,i);
+i++;
+document.getElementById("changer").innerHTML = xtext2;
+if (i != xtext.length+1){
+setTimeout(addletters2, 25)
+}
+else{
+rightslider();
+leftslider();
+}
+}
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

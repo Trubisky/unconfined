@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Unconfined Payment Processor</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+<style>
+body {text-align: center;}
+</style>
+</head>
+<body>
+<div style="margin-top: 5%; margin-left: 25%; height: auto; width: 50%; background-color: #d6d6d6;" class="card"><br>
+<h1 style="text-align: center;">Unconfined Payment Processor</h1>
+<form style="border-style: dashed; border-width: thin; border-color: #a3a2a2; width: 90%; margin: auto;">
+<div class="form-group" style="width: 80%; margin: auto; ">
+<label for="ignore">Login Credientals</label>
+    <input type="text" class="form-control" id="username" placeholder="Enter username">
+	<input type="text" class="form-control" id="password" placeholder="Enter password">
+	<input type="text" class="form-control" id="password2" placeholder="Enter password again">
+    <small id="who cares" class="form-text text-muted">Please keep these safe; they will be used to access your funds and, for developers, api data.</small>
+</div>
+<br>
+<div class="form-group" style="width: 80%; margin: auto;">
+<label for="ignore">Other Information</label>
+    <input type="text" class="form-control" id="email" placeholder="Enter email">
+	<select id="type">
+    <option value="0">Regular / Customer Account</option>
+    <option value="1">Developer / Merchant Account</option>
+	</select>
+   <small id="yeet" class="form-text text-muted">Select Regular if you are looking to deposit money into Unconfined for easy one-click payments, and 
+   developer if you're looking to integrate Unconfined with your business.</small>
+</div><br>
+<input type="button" value="Register" onclick="register();" class="btn btn-light" style="width: 25%; margin:auto;"></input><br><br>
+</form>
+
+<a href="register.html">New to unconfined? Click to register</a>
+<br>
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/register.js"></script>
+</body> 
+</html>

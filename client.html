@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Unconfined Payment Processor</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+<style>
+body {background-color: #242424;}
+
+</style>
+</head>
+<body>
+<div style="margin-top: 5%; margin-left: 15%; height: auto; width: 70%; " class="card">
+<h1 style="text-align: center;">Unconfined Payment Processor</h1>
+<br>
+<div class="row" style="width: 100%;">
+
+<div class="col-4">
+<p style="margin-left: 6%; font-size: 120%">
+ Company: *COMPANY <br> Amount: *AMOUNT ETH  <br>
+ Item(s): 
+</p>
+<br>
+<h5 style="margin-left: 6%; bottom: 0;">
+Total Amount Due: *AMOUNT
+</h5>
+
+<h5 style="margin-left: 6%;  bottom: 0; color: red;" id="status">
+Payment Status: waiting for payment (X)
+</h5>
+
+
+
+</div>
+<div class="col-7">
+<h3>Payment Options</h3>
+<div style="height: auto; width: 100%;">
+<h4>External Wallet Payment</h4>
+<p>If you don't have an account or don't think you're going to be paying with Unconfined more than once, you can pay manually by sending the specified amount of cryptocurrency to the merchant's address</p>
+
+
+<h6> Amount due:<br> *AMOUNT </h6>
+<h6> Address to send to:<br> *ADDRESS </h6>
+
+
+<br>
+If the payment status above is changing actively, the socket is open and you can send the payment whenever you wish. Keep in mind the external payment portal only remains open for 24 hours before
+canceling a transaction, so don't procrastinate on paying or your funds may be lost
+</div>
+<br><br>
+<div style="height: auto;">
+<h4>One Click Payment</h4>
+<p>
+If you're paying using a compatible currency (currently only ETH), you can use the funds in your account to pay the merchant directly, without sending a manual transaction.
+</p>
+<h6 id="account">Current Account: None</h6>
+<h6 id="funds">Available Funds: []</h6> 
+<h6 style="color: green;">Sufficient Balance Available </h6>
+<input type="button" class="btn btn-primary" style="width: 25%;" onclick="oneClick();" value="Pay Now"></input>
+<input type="button" class="btn btn-primary" style="width: 25%;" value="Login"></input>
+<br><br>
+</div>
+
+</div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script>
+//cookie functions
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function checkCookie(val) {
+    var username = getCookie(val);
+    if (username != "") {
+        return username;
+    } else {
+        return false;
+    }
+}
+//end of cookie shit
+tag = *ID;
+var socket = new WebSocket("ws://unconfined.net:1014");
+var socket2 = new WebSocket("ws://unconfined.net:1013");
+socket.onopen = function(evt){
+socket.send(JSON.stringify({Action: "Client", id: tag}));
+};
+socket.onmessage = function(send) {
+data = JSON.parse(send.data);
+if (data["Action"] == "update"){
+document.getElementById("status").innerHTML = "<h6>Payment Status: </h6> " + data["Value"];
+}
+}
+function oneClick(){
+socket.send(JSON.stringify({Action: "OneClickPay", id: tag, Token: getCookie("Token")}));
+}
+
+socket2.onopen = function(evt){
+socket2.send(JSON.stringify({Action: "ClientAccount", Token: getCookie("Token")}));
+}
+socket2.onmessage = function(send){
+data2 = JSON.parse(send.data);
+document.getElementById("account").innerHTML = "Current Account: " + data2["account"];
+document.getElementById("funds").innerHTML = "Available Funds: " + data2["balance"] + " ETH";
+
+}
+</script>
+</body> 
+</html>

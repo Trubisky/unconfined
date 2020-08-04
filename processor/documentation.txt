@@ -1,0 +1,7 @@
+sendModule.js:
+Open a new thread (see masterExample.js)
+Send JSON (to: address to send to, value: eth value);
+Gas Price is automatically set to gas station safeLow
+
+processor.js:
+As of the current time (9/10/18), both the website interface and the 

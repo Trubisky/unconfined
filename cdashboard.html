@@ -1,0 +1,101 @@
+<html>
+<head><title>Unconfined</title>
+<style>
+#center {margin: auto; text-align: center;}
+#maintext {margin: auto;}
+#bottomimg {width: 50%; margin: auto;}
+p {font-size: 120%;}
+#icon{ 
+    transform-origin:50% 50%;
+    animation:4s rotateRight infinite linear; 
+	
+}
+@keyframes rotateRight{
+    100%{ transform:rotate(360deg); }
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Unconfined</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+	  <li class="nav-item active">
+        <a class="nav-link" href="#">About Us<span class="sr-only">(current)</span></a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="login.html">Login</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="wallet.html">Contact us</a>
+      </li>
+	  <li class="nav-item">
+        <a class="nav-link" href="#" id="cxuser">Current User: None</a>
+      </li>
+    </ul>
+   
+  </div>
+</nav>
+
+
+<div id="maintext">
+<div class="row">
+<div class="col-2" style="background-color: #242424; height: 100%;">
+<br>
+<img src="https://academist-app-production.s3.amazonaws.com/uploads/user/profile_image/1211/default_user_icon.png" style="width: 40%; height: auto; margin-left: auto; margin-right: auto; display: block;"></img>
+
+<p id="username" style="color: white; text-align: center;">John Doe</p>
+
+<input type="button" class="btn btn-outline-light" style="width: 100%; margin-left: 5;"  value="Deposit"></input>
+<input type="button" class="btn btn-outline-light" style="width: 100%; margin-left: 5;"   value="Settings"></input>
+<input type="button" class="btn btn-outline-light" style="width: 100%; margin-left: 5;"  value="Logout "></input>
+</div>
+<div class="col-8">
+<div style="margin: auto; width: 90%;">
+<br><br>
+
+<h2 style="margin-left: 3%;" >Unconfined Customer Dashboard</h2>
+<h4 style="margin-left: 30%"> Balance over last 7 Transactions </h4>
+<div id="chartContainer" style="width: 70%; height: 40%">
+
+</div>
+<br>
+<div class="card" style="width: 105%;">
+<br>
+<p id="balance">Current Balance: 0.46987124 ETH</p>
+<p id="transactions">Lifetime Transactions: 4</p>
+<p id="totalspent">Total ETH Spent: 0.24792</p>
+</div>
+<br>
+<div class="card" id="dhistory" style="width: 105%;">
+<h6>Deposit History</h6>
+</div>
+</div>
+</div>
+<div class="col-2">
+<br><br>
+<h3> Transaction History </h3>
+<div class="card" style="width: 100%; height: 70%; ">
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="/js/cdashboard.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
